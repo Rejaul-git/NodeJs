@@ -1,0 +1,45 @@
+<% layout("layouts/boilerplate.ejs") -%>
+<h1 class="text-center">Register</h1>
+<form class="row validation" novalidate action="/register" method="POST">
+  <div class="col-6 m-auto">
+    <div>
+      <label for="name">name:</label><br />
+      <input
+        style="width: 45vw"
+        type="text"
+        id="userName"
+        name="username"
+        class="form-control"
+        required
+      />
+      <div class="valid-feedback">Looks good!</div>
+    </div>
+    <br />
+    <div>
+      <label for="email">email:</label><br />
+      <input
+        style="width: 45vw"
+        type="email"
+        id="email"
+        class="form-control"
+        name="email"
+        required
+      />
+      <div class="valid-feedback">Looks good!</div>
+    </div>
+    <br />
+    <div>
+      <label for="password">password</label><br />
+      <input
+        style="width: 45vw"
+        type="password"
+        class="form-control"
+        id="password"
+        name="password"
+        required
+      />
+      <div class="valid-feedback">Looks good!</div>
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+  </div>
+</form>

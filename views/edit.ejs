@@ -1,0 +1,140 @@
+<% layout("layouts/boilerplate.ejs") -%>
+<style>
+  input#flexCheckDefault {
+    margin-left: -1px;
+    margin-top: 18px;
+  }
+  input#flexCheckDefault-0 {
+    margin: 19px 2px 5px -18px;
+  }
+
+  label.form-check-label {
+    margin-right: 8px;
+    margin-top: 14px;
+  }
+  img.w-35.mr-2 {
+    width: 197px;
+    margin-top: 14px;
+  }
+  input#flexCheckDefault {
+    margin-left: -19px;
+  }
+</style>
+<h1 class="text-center bg-primary text-uppercase">Update Field</h1>
+<form
+  class="row validation"
+  novalidate
+  action="/allcamp/<%=camps._id %>?_method=PUT"
+  method="POST"
+  enctype="multipart/form-data"
+>
+  <div class="col-6 m-auto">
+    <div class="mb-3">
+      <label for="fname">Title:</label><br />
+      <input
+        style="width: 45vw"
+        type="text"
+        id="fname"
+        class="form-control"
+        name="title"
+        required
+        value="<%= camps.title %>"
+      /><br />
+    </div>
+    <div class="mb-3">
+      <label for="lname">Location:</label><br />
+      <input
+        style="width: 45vw"
+        type="text"
+        id="lname"
+        class="form-control"
+        name="location"
+        required
+        value="<%=camps.location %>"
+      /><br />
+    </div>
+    <div>
+      <label for="img">Image</label><br />
+      <input
+        style="width: 45vw"
+        type="file"
+        multiple
+        name="image"
+        class="form-control"
+        id="img"
+        required
+      /><br />
+      <div class="valid-feedback">Looks good!</div>
+    </div>
+    <div class="mb-3">
+      <label for="price">price</label><br />
+      <input
+        style="width: 45vw"
+        type="text"
+        class="form-control"
+        id="price"
+        name="price"
+        required
+        value="<%=camps.price %>"
+      /><br />
+    </div>
+    <div class="mb-3">
+      <label for="des">description</label><br />
+      <textarea
+        value="<%= camps.description  %>"
+        style="width: 45vw"
+        name="description"
+        id="des"
+        class="form-control"
+        cols="23"
+        rows="2"
+        required
+      ></textarea>
+    </div>
+    <div class="mb-3 d-flex flex-wrap">
+      <% camps.images.forEach((camp,i) => {%>
+      <img class="w-35 mr-2" src="<%=camp.url  %>" alt="" />
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          name="deleteImages[]"
+          value="<%=camp.filename %>"
+          id="flexCheckDefault-<%=i %>"
+        />
+        <label class="form-check-label" for="flexCheckDefault-<%=i %>">
+          delete
+        </label>
+      </div>
+      <%}); %>
+    </div>
+
+    <button type="submit" class="btn btn-primary mb-3">Submit</button>
+  </div>
+</form>
+
+<script>
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  (function () {
+    "use strict";
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll(".valdation");
+
+    // Loop over them and prevent submission
+    Array.from(forms).forEach(function (form) {
+      form.addEventListener(
+        "submit",
+        function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+
+          form.classList.add("was-validated");
+        },
+        false
+      );
+    });
+  })();
+</script>

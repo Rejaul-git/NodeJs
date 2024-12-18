@@ -1,0 +1,77 @@
+<% layout("layouts/boilerplate.ejs") -%>
+
+<h1 class="text-center">Input Form</h1>
+
+<form
+  class="row validation"
+  novalidate
+  action="/allcamp"
+  method="POST"
+  enctype="multipart/form-data"
+>
+  <div class="col-6 m-auto">
+    <div>
+      <label for="fname">Title:</label><br />
+      <input
+        style="width: 45vw"
+        type="text"
+        id="fname"
+        name="title"
+        class="form-control"
+        required
+      />
+      <div class="valid-feedback">Looks good!</div>
+    </div>
+    <br />
+    <div>
+      <label for="lname">Location:</label><br />
+      <input
+        style="width: 45vw"
+        type="text"
+        id="lname"
+        class="form-control"
+        name="location"
+        required
+      />
+      <div class="valid-feedback">Looks good!</div>
+    </div>
+    <br />
+    <div>
+      <label for="img">Image</label><br />
+      <input
+        style="width: 45vw"
+        type="file"
+        multiple
+        name="image"
+        class="form-control"
+        id="img"
+        required
+      /><br />
+      <div class="valid-feedback">Looks good!</div>
+    </div>
+    <div>
+      <label for="price">price</label><br />
+      <input
+        style="width: 45vw"
+        type="text"
+        id="price"
+        name="price"
+        class="form-control"
+        required
+      /><br />
+      <div class="valid-feedback">Looks good!</div>
+    </div>
+    <div class="mb-3">
+      <label for="des">description</label><br />
+      <textarea
+        style="width: 45vw"
+        name="description"
+        class="form-control"
+        id="des"
+        required
+      ></textarea>
+      <div class="valid-feedback">Looks good!</div>
+    </div>
+    <button type="submit" class="btn btn-primary mb-3">Submit</button>
+  </div>
+</form>
